@@ -20,7 +20,7 @@
 
 set -e -x
 
-export PULSAR_STANDALONE_CONF=test-conf/standalone.conf
+export PULSAR_STANDALONE_CONF=test-conf/standalone-oauth2.conf
 bin/pulsar-daemon start standalone \
         --no-functions-worker --no-stream-storage \
         --bookkeeper-dir data/bookkeeper
