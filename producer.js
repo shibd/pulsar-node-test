@@ -18,6 +18,9 @@
  */
 
 const Pulsar = require('pulsar-client');
+const SegfaultHandler = require('segfault-handler');
+
+SegfaultHandler.registerHandler('crash.log');
 
 (async () => {
   const params = {
