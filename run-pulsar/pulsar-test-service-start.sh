@@ -25,8 +25,8 @@ cd $SRC_DIR
 
 ./run-pulsar/pulsar-test-service-stop.sh
 
-CONTAINER_ID=$(docker run -i -p 8080:8080 -p 6650:6650 -p 8443:8443 -p 6651:6651 --rm --detach apachepulsar/pulsar:latest sleep 3600)
-#CONTAINER_ID=$(docker run -i -p 8080:8080 -p 6650:6650 -p 8443:8443 -p 6651:6651 --rm --detach apachepulsar/java-test-image:2.12.0-SNAPSHOT sleep 3600)
+#CONTAINER_ID=$(docker run -i -p 8080:8080 -p 6650:6650 -p 8443:8443 -p 6651:6651 --rm --detach apachepulsar/pulsar:latest sleep 3600)
+CONTAINER_ID=$(docker run -i -p 8080:8080 -p 6650:6650 -p 8443:8443 -p 6651:6651 --rm --detach apachepulsar/java-test-image:2.12.0-SNAPSHOT sleep 3600)
 
 
 echo $CONTAINER_ID >.tests-container-id.txt

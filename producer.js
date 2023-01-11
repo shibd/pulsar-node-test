@@ -29,13 +29,18 @@ SegfaultHandler.registerHandler('crash.log');
     console.log('[%s][%s:%d] %s', Pulsar.LogLevel.toString(level), file, line, message);
   });
 
-  const params = {
-    issuer_url: "https://dev-kt-aa9ne.us.auth0.com",
-    client_id: "Xd23RHsUnvUlP7wchjNYOaIfazgeHd9x",
-    client_secret: "rT7ps7WY8uhdVuBTKWZkttwLdQotmdEliaM5rLfmgNibvqziZ-g07ZH52N_poGAb",
-    audience: "https://dev-kt-aa9ne.us.auth0.com/api/v2/",
-  }
-  const auth = new Pulsar.AuthenticationOauth2(params);
+  // const params = {
+  //   issuer_url: "https://dev-kt-aa9ne.us.auth0.com",
+  //   client_id: "Xd23RHsUnvUlP7wchjNYOaIfazgeHd9x",
+  //   client_secret: "rT7ps7WY8uhdVuBTKWZkttwLdQotmdEliaM5rLfmgNibvqziZ-g07ZH52N_poGAb",
+  //   audience: "https://dev-kt-aa9ne.us.auth0.com/api/v2/",
+  // }
+  // const auth = new Pulsar.AuthenticationOauth2(params);
+
+  const auth = new Pulsar.AuthenticationTls({
+    certificatePath: './run-pulsar/client-cert.pem',
+    privateKeyPath: './run-pulsar/client-key.pem',
+  });
 
   // Create a client
   const client = new Pulsar.Client({
