@@ -22,6 +22,7 @@ const SegfaultHandler = require('segfault-handler');
 
 SegfaultHandler.registerHandler('crash.log');
 
+
 (async () => {
 
   Pulsar.Client.setLogHandler((level, file, line, message) => {
@@ -38,21 +39,25 @@ SegfaultHandler.registerHandler('crash.log');
 
   // Create a client
   const client = new Pulsar.Client({
-    serviceUrl: 'pulsar://localhost:6650',
+    serviceUrl: 'pulsar+ssl://localhost:6651',
     authentication: auth,
     operationTimeoutSeconds: 30,
+    tlsTrustCertsFilePath: './run-pulsar/cacert.pem',
+    useTls: true,
+    tlsValidateHostname: false,
+    tlsAllowInsecureConnection: false,
   });
 
   // Create a producer
   const producer = await client.createProducer({
-    topic: 'persistent://public/default/my-topic',
+    topic: 'test-oauth2',
     sendTimeoutMs: 30000,
     batchingEnabled: true,
   });
 
   // Create a consumer
   const consumer = await client.subscribe({
-    topic: 'persistent://public/default/my-topic',
+    topic: 'test-oauth2',
     subscription: 'sub1',
     subscriptionType: 'Shared',
     ackTimeoutMs: 10000,

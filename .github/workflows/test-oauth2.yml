@@ -29,8 +29,8 @@ concurrency:
 jobs:
 
   macos-napi:
-    name: macos-test
-    runs-on: macos-latest
+    name: unbuntu-test
+    runs-on: ubuntu-22.04
     timeout-minutes: 3000
 
     strategy:
