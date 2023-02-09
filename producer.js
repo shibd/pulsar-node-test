@@ -37,6 +37,7 @@ SegfaultHandler.registerHandler('crash.log');
   // }
   // const auth = new Pulsar.AuthenticationOauth2(params);
 
+   // oauth2 + ssl
   const auth = new Pulsar.AuthenticationTls({
     certificatePath: './run-pulsar/client-cert.pem',
     privateKeyPath: './run-pulsar/client-key.pem',
@@ -44,7 +45,7 @@ SegfaultHandler.registerHandler('crash.log');
 
   // Create a client
   const client = new Pulsar.Client({
-    serviceUrl: 'pulsar+ssl://localhost:6651',
+    serviceUrl: 'pulsar+ssl://localhost:6650',
     authentication: auth,
     operationTimeoutSeconds: 30,
     tlsTrustCertsFilePath: './run-pulsar/cacert.pem',

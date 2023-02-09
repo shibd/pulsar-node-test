@@ -1,0 +1,1 @@
+g++ -std=c++11 Oauth2.cc libpulsarwithdeps.a -lpthread -ldl
